@@ -33,7 +33,7 @@ app = Flask(__name__)
 def home():
     return 'home'
 @app.route('/hashi', methods=['GET', 'POST'])
-def hashing():
+def hashi():
     imageName = request.args.get('image')
     urlImage = 'https://dwjz5q0kg4677.cloudfront.net/'+imageName
     request_response = requests.head(urlImage)
@@ -56,5 +56,6 @@ def hashing():
     imageHash = dhash(image)
 
     return str(imageHash)
+
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(port=5000, debug=True)
